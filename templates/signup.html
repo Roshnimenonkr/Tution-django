@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <!-- Font Icon -->
+     <link rel="stylesheet" href="/static/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+     <!-- Main css -->
+     <link rel="stylesheet" href="/static/css/style.css">
+     <style>
+       * {
+   box-sizing: border-box;
+ }
+ 
+ .column {
+   float: left;
+   width: 33.33%;
+   padding: 20px;
+ }
+ 
+ /* Clearfix (clear floats) */
+ .row::after {
+   content: "";
+   clear: both;
+   display: table;
+ }
+ 
+ /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+ @media screen and (max-width: 500px) {
+   .column {
+     width: 100%;
+   }
+ }
+     </style>
+</head>
+<body>
+    
+    <section class="signup">
+        <div class="container">
+            <div class="signup-content row">
+                <div class="signup-form column">
+                    <h2 class="form-title">Sign up</h2>
+                    <form method="POST" class="register-form" id="register-form">
+                        {% csrf_token %} 
+                        <div class="form-group">
+                            <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input type="text" name="Name" id="name" placeholder="Your Name"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><i class="zmdi zmdi-email"></i></label>
+                            <input type="email" name="email" id="email" placeholder="Your Email"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="class"><i class="zmdi zmdi-graduation-cap"></i></label>
+                            <input type="text" name="standard" id="class" placeholder="Your Standard">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone"><i class="zmdi zmdi-phone-in-talk"></i></label>
+                            <input type="number" name="phone" placeholder="Phone Number">
+                        </div>
+                        <div class="form-group">
+                            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                            <input type="password" name="pass" id="pass" placeholder="Password"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                            <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
+                        </div>
+                        
+                        <div class="form-group form-button">
+                            <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                        </div>
+                    </form>
+                    {% if messages %} 
+                    {% for msg in messages %}
+                   <h1  style="color:red ;"> {{ msg }}</h1> <!--  Jinja Template-->
+                   {% endfor %}
+                   {% endif %}
+                </div>
+                <div class="signup-image column">
+                    <figure><img src="/static/images/signup-image.jpg" alt="sign up image"></figure>
+                    <a href="{% url 'log' %}" class="signup-image-link">I am already member</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

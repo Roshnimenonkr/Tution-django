@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    h1{
+        text-align: center;
+        color: blue;
+    }
+    form{ 
+        display: table;    
+        position: absolute;   
+        right: 40%;
+        padding: 10px;
+    }
+     p {
+         display: table-row;  }
+label { 
+       display: table-cell;
+        font-size: 20px;
+    }
+input {
+        display: table-cell;
+        font-size: 20px; }
+button{
+    position: absolute;
+    right: 50%;
+}
+</style>
+
+</head>
+<body>
+    
+ <div
+  class="bg-image"
+  style="
+    background-image: url('https://images.unsplash.com/photo-1491895200222-0fc4a4c35e18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80');
+    background-size: cover;
+    
+    height: 100vh;
+  "
+  >
+    <div class="container">
+        <br>
+         
+  <h1 ><u>Book Tutor</u></h1>
+  <a href="{% url 'studentHome'%}"><button type="submit" style="right:55%;top: 80%;">Home</button></a>
+  <form method="POST" >
+    {% csrf_token %} 
+    <p>
+        <label for="student">Student Name</label>
+        <input type="text" name="student"  value="{{student}}"/>
+   </p>
+   <br>
+   <p>
+    
+    <label for="tutor">Standard </label>
+    <input type="text" name="standard" value="{{standard}}" />
+</p>
+<br>
+   <p>
+    
+        <label for="tutor">Tutor Name </label>
+        <input type="text" name="tutor"  value="{{tutor}}" />
+    </p>
+   <br>
+   <p>
+    
+    <label for="tutor">Subject </label>
+    <input type="text" name="subject"  value="{{subject}}" />
+</p>
+<br>
+    <p>
+        <label for="date">Date Requested</label>
+        <input type="date" name="date">
+    </p>
+    <br>
+    <p>
+        <label for="time">Time Requested</label>
+        <input type="time" name="time">
+    </p>
+    <br>
+    <p>
+        <label for="total_time">Total Time You Need</label>
+        <input type="number" name="total_time">
+    </p>
+    <br>
+    <p>
+        <label for="price">Charge per Hour</label>
+        <input type="number" name="price" value="{{price}}">
+    </p>
+    <br>
+    
+
+        <button type="submit">Bookclass</button>
+  
+</form>
+        
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                 {% if messages %} 
+                    {% for msg in messages %}
+                   <h1  style="color:red ;"> {{ msg }}</h1> <!--  Jinja Template-->
+                   {% endfor %}
+                   {% endif %}
+    </div>
+</body>
+</html>
